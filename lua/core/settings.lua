@@ -3,11 +3,11 @@ local home = require("core.global").home
 
 -- Set it to false if you want to use https to update plugins and treesitter parsers.
 ---@type boolean
-settings["use_ssh"] = true
+settings["use_ssh"] = false
 
 -- Set it to false if there are no need to format on save.
 ---@type boolean
-settings["format_on_save"] = true
+settings["format_on_save"] = false
 
 -- Set the format disabled directories here, files under these dirs won't be formatted on save.
 ---@type string[]

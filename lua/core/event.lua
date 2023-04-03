@@ -132,6 +132,16 @@ function autocmd.load_autocmds()
 				"c,cpp",
 				"nnoremap <leader>h :ClangdSwitchSourceHeaderVSplit<CR>",
 			},
+			{
+				"FileType",
+				"rmd",
+				"set ft=markdown.rmd",
+			},
+			{
+				"FileType",
+				"qmd",
+				"set ft=markdown.qmd",
+			},
 		},
 		yank = {
 			{

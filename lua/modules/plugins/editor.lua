@@ -1,5 +1,23 @@
 local editor = {}
 
+editor["gcmt/wildfire.vim"] = {
+	lazy = true,
+	event = "VeryLazy",
+	init = require("editor.wildfire"),
+}
+
+editor["Pocco81/auto-save.nvim"] = {
+	lazy = true,
+	event = "VeryLazy",
+	config = require("editor.autosave"),
+}
+
+editor["ur4ltz/surround.nvim"] = {
+	lazy = true,
+	event = "VeryLazy",
+	config = require("editor.surround"),
+}
+
 editor["rainbowhxch/accelerated-jk.nvim"] = {
 	lazy = true,
 	event = "VeryLazy",
@@ -15,11 +33,11 @@ editor["m4xshen/autoclose.nvim"] = {
 	event = "InsertEnter",
 	config = require("editor.autoclose"),
 }
-editor["max397574/better-escape.nvim"] = {
-	lazy = true,
-	event = { "CursorHold", "CursorHoldI" },
-	config = require("editor.better-escape"),
-}
+-- editor["max397574/better-escape.nvim"] = {
+-- 	lazy = true,
+-- 	event = { "CursorHold", "CursorHoldI" },
+-- 	config = require("editor.better-escape"),
+-- }
 editor["LunarVim/bigfile.nvim"] = {
 	lazy = false,
 	config = require("editor.bigfile"),

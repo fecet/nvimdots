@@ -8,6 +8,7 @@ local function load_options()
 		-- spellfile = global.cache_dir .. "spell/en.uft-8.add",
 		-- viewdir = global.cache_dir .. "view/",
 		-- winblend = 10,
+		title = true,
 		autoindent = true,
 		autoread = true,
 		autowrite = true,
@@ -97,7 +98,7 @@ local function load_options()
 		wildignorecase = true,
 		winminwidth = 10,
 		winwidth = 30,
-		wrap = false,
+		wrap = true,
 		wrapscan = true,
 		writebackup = false,
 	}
