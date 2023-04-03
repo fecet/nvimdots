@@ -75,6 +75,13 @@ function Lazy:load_lazy()
 			missing = true,
 			colorscheme = { settings.colorscheme },
 		},
+		dev = {
+			-- directory where you store your local plugin projects
+			path = "~/codes",
+			---@type string[] plugins that match these patterns will use your local versions instead of being fetched from GitHub
+			patterns = {}, -- For example {"folke"}
+			fallback = true, -- Fallback to git when local plugin doesn't exist
+		},
 		ui = {
 			-- a number <1 is a percentage., >1 is a fixed size
 			size = { width = 0.88, height = 0.8 },

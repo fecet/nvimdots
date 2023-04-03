@@ -26,7 +26,7 @@ return function()
 	set_sidebar_icons()
 
 	require("lspsaga").setup({
-		-- Breadcrumbs: https://dev.neovim.pro/lspsaga/breadcrumbs/
+		request_timeout = 3000,
 		symbol_in_winbar = {
 			enable = true,
 			separator = " " .. icons.ui.Separator,
@@ -58,6 +58,17 @@ return function()
 			keys = {
 				quit = "q",
 				exec = "<CR>",
+			},
+		},
+		-- https://dev.neovim.pro/lspsaga/definition/
+		definition = {
+			width = 0.6,
+			height = 0.5,
+			keys = {
+				edit = "<CR>",
+				vsplit = "v",
+				split = "s",
+				tabe = "t",
 			},
 		},
 		-- https://dev.neovim.pro/lspsaga/diagnostic/

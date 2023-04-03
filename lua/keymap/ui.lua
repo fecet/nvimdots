@@ -2,12 +2,14 @@ local bind = require("keymap.bind")
 local map_cr = bind.map_cr
 -- local map_cu = bind.map_cu
 -- local map_cmd = bind.map_cmd
--- local map_callback = bind.map_callback
+local map_callback = bind.map_callback
 
 local plug_map = {
 	-- Plugin: bufferline
-	["n|<A-j>"] = map_cr("BufferLineCycleNext"):with_noremap():with_silent():with_desc("buffer: Switch to next"),
-	["n|<A-k>"] = map_cr("BufferLineCyclePrev"):with_noremap():with_silent():with_desc("buffer: Switch to prev"),
+	["n|<C-L>"] = map_cr("BufferLineCycleNext"):with_noremap():with_silent():with_desc("buffer: Switch to next"),
+	["n|<C-S-l>"] = map_cr("BufferLineCycleNext"):with_noremap():with_silent():with_desc("buffer: Switch to next"),
+	["n|<C-H>"] = map_cr("BufferLineCyclePrev"):with_noremap():with_silent():with_desc("buffer: Switch to prev"),
+	["n|<C-S-h>"] = map_cr("BufferLineCyclePrev"):with_noremap():with_silent():with_desc("buffer: Switch to prev"),
 	["n|<A-S-j>"] = map_cr("BufferLineMoveNext"):with_noremap():with_silent():with_desc("buffer: Move current to next"),
 	["n|<A-S-k>"] = map_cr("BufferLineMovePrev"):with_noremap():with_silent():with_desc("buffer: Move current to prev"),
 	["n|<leader>be"] = map_cr("BufferLineSortByExtension"):with_noremap():with_desc("buffer: Sort by extension"),
@@ -21,6 +23,18 @@ local plug_map = {
 	["n|<A-7>"] = map_cr("BufferLineGoToBuffer 7"):with_noremap():with_silent():with_desc("buffer: Goto buffer 7"),
 	["n|<A-8>"] = map_cr("BufferLineGoToBuffer 8"):with_noremap():with_silent():with_desc("buffer: Goto buffer 8"),
 	["n|<A-9>"] = map_cr("BufferLineGoToBuffer 9"):with_noremap():with_silent():with_desc("buffer: Goto buffer 9"),
+	["nxo|<C-->"] = map_callback(function()
+			vim.g.neovide_scale_factor = vim.g.neovide_scale_factor - 0.01
+		end)
+		:with_noremap()
+		:with_silent()
+		:with_desc("ui: change scale smaller"),
+	["nxo|<C-=>"] = map_callback(function()
+			vim.g.neovide_scale_factor = vim.g.neovide_scale_factor + 0.01
+		end)
+		:with_noremap()
+		:with_silent()
+		:with_desc("ui: change scale larger"),
 }
 
 bind.nvim_load_mapping(plug_map)

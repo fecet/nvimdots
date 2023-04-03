@@ -167,6 +167,7 @@ local data = {
 		Vim = "",
 	},
 	cmp = {
+		-- kind_text
 		Codeium = "",
 		TabNine = "",
 		Copilot = "",

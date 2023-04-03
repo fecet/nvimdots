@@ -7,13 +7,16 @@ local et = bind.escape_termcode
 
 local plug_map = {
 	-- Plugin: accelerate-jk
-	["n|j"] = map_callback(function()
-		return et("<Plug>(accelerated_jk_gj)")
-	end):with_expr(),
-	["n|k"] = map_callback(function()
-		return et("<Plug>(accelerated_jk_gk)")
-	end):with_expr(),
-
+	-- ["n|j"] = map_callback(function()
+	-- 		return et("<Plug>(accelerated_jk_gj)")
+	-- 	end)
+	-- 	:with_expr()
+	-- 	:with_noremap(),
+	-- ["n|k"] = map_callback(function()
+	-- 		return et("<Plug>(accelerated_jk_gk)")
+	-- 	end)
+	-- 	:with_expr()
+	-- 	:with_noremap(),
 	-- Plugin persisted.nvim
 	["n|<leader>ss"] = map_cu("SessionSave"):with_noremap():with_silent():with_desc("session: Save"),
 	["n|<leader>sl"] = map_cu("SessionLoad"):with_noremap():with_silent():with_desc("session: Load current"),
@@ -69,24 +72,31 @@ local plug_map = {
 	["n|<leader><leader>D"] = map_cr("DiffviewClose"):with_silent():with_noremap():with_desc("git: Close diff"),
 
 	-- Plugin: vim-easy-align
-	["nx|gea"] = map_cr("EasyAlign"):with_desc("edit: Align with delimiter"),
+	-- ["nx|gea"] = map_cr("EasyAlign"):with_desc("edit: Align with delimiter"),
 
 	-- Plugin: hop
 	["nv|<leader>w"] = map_cmd("<Cmd>HopWordMW<CR>"):with_noremap():with_desc("jump: Goto word"),
-	["nv|<leader>j"] = map_cmd("<Cmd>HopLineMW<CR>"):with_noremap():with_desc("jump: Goto line"),
-	["nv|<leader>k"] = map_cmd("<Cmd>HopLineMW<CR>"):with_noremap():with_desc("jump: Goto line"),
-	["nv|<leader>c"] = map_cmd("<Cmd>HopChar1MW<CR>"):with_noremap():with_desc("jump: Goto one char"),
-	["nv|<leader>cc"] = map_cmd("<Cmd>HopChar2MW<CR>"):with_noremap():with_desc("jump: Goto two chars"),
+	["nv|F"] = map_cmd("<Cmd>HopWordMW<CR>"):with_noremap():with_desc("jump: Goto word"),
+	["nv|<leader>l"] = map_cmd("<Cmd>HopLineStartMW<CR>"):with_noremap():with_desc("jump: Goto line"),
+	["nv|f"] = map_cmd("<Cmd>HopAnywhereCurrentLine<CR>"):with_noremap():with_desc("jump: Goto line"),
+	-- ["nv|<leader>c"] = map_cmd("<Cmd>HopChar1MW<CR>"):with_noremap():with_desc("jump: Goto one char"),
+	-- ["nv|<leader>cc"] = map_cmd("<Cmd>HopChar2MW<CR>"):with_noremap():with_desc("jump: Goto two chars"),
 
 	-- Plugin: treehopper
-	["o|m"] = map_cu("lua require('tsht').nodes()"):with_silent():with_desc("jump: Operate across syntax tree"),
+	["xo|m"] = map_cu("lua require('tsht').nodes()"):with_silent():with_desc("jump: Operate across syntax tree"),
 
 	-- Plugin: tabout
-	["i|<A-l>"] = map_cmd("<Plug>(TaboutMulti)"):with_silent():with_noremap():with_desc("edit: Goto end of pair"),
-	["i|<A-h>"] = map_cmd("<Plug>(TaboutBackMulti)"):with_silent():with_noremap():with_desc("edit: Goto begin of pair"),
-
-	-- Plugin suda.vim
-	["n|<A-s>"] = map_cu("SudaWrite"):with_silent():with_noremap():with_desc("editn: Save file using sudo"),
+	["i|<tab>"] = map_cmd("<Plug>(TaboutMulti)"):with_silent():with_noremap():with_desc("edit: Goto end of pair"),
+	["i|<s-tab>"] = map_cmd("<Plug>(TaboutBackMulti)")
+		:with_silent()
+		:with_noremap()
+		:with_desc("edit: Goto begin of pair"),
+	["n|<CR>"] = map_callback(function()
+		require("wildfire").init_selection()
+	end):with_silent(),
+	["x|<CR>"] = map_cr(":lua require'wildfire'.node_incremental()"):with_silent(),
+	-- ["x|<CR>"] = map_cr(":lua require'nvim-treesitter.incremental_selection'.node_incremental()"):with_silent(),
+	["x|-"] = map_cr(":lua require'wildfire'.visual_inner()"):with_silent(),
 }
 
 bind.nvim_load_mapping(plug_map)

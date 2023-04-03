@@ -95,7 +95,7 @@ return function()
 
 				vim_item.menu = setmetatable({
 					cmp_tabnine = "[TN]",
-					copilot = "[CPLT]",
+					copilot = "[CPT]",
 					buffer = "[BUF]",
 					orgmode = "[ORG]",
 					nvim_lsp = "[LSP]",
@@ -106,6 +106,7 @@ return function()
 					latex_symbols = "[LTEX]",
 					luasnip = "[SNIP]",
 					spell = "[SPELL]",
+					jupynium = "[JUP]",
 				}, {
 					__index = function()
 						return "[BTN]" -- builtin/unknown source names
@@ -131,25 +132,33 @@ return function()
 		-- You can set mappings if you want
 		mapping = cmp.mapping.preset.insert({
 			["<CR>"] = cmp.mapping.confirm({ select = true, behavior = cmp.ConfirmBehavior.Replace }),
-			["<C-p>"] = cmp.mapping.select_prev_item(),
-			["<C-n>"] = cmp.mapping.select_next_item(),
-			["<C-d>"] = cmp.mapping.scroll_docs(-4),
-			["<C-f>"] = cmp.mapping.scroll_docs(4),
-			["<C-w>"] = cmp.mapping.close(),
-			["<Tab>"] = cmp.mapping(function(fallback)
+			["<C-k>"] = cmp.mapping.select_prev_item(),
+			["<C-j>"] = cmp.mapping.select_next_item(),
+			-- ["<C-d>"] = cmp.mapping.scroll_docs(-4),
+			-- ["<C-f>"] = cmp.mapping.scroll_docs(4),
+			["<C-Space>"] = cmp.mapping(cmp.mapping.complete(), { "i", "c" }),
+			["<C-e>"] = cmp.mapping(function()
 				if cmp.visible() then
-					cmp.select_next_item()
-				elseif require("luasnip").expand_or_locally_jumpable() then
-					vim.fn.feedkeys(t("<Plug>luasnip-expand-or-jump"))
+					cmp.close()
+				else
+					cmp.complete()
+				end
+			end, { "i", "s" }),
+			["<Tab>"] = cmp.mapping(function(fallback)
+				-- if cmp.visible() then
+				-- 	cmp.select_next_item()
+				if require("luasnip").expand_or_jumpable() then
+					vim.fn.feedkeys(
+						vim.api.nvim_replace_termcodes("<Plug>luasnip-expand-or-jump", true, true, true),
+						""
+					)
 				else
 					fallback()
 				end
 			end, { "i", "s" }),
 			["<S-Tab>"] = cmp.mapping(function(fallback)
-				if cmp.visible() then
-					cmp.select_prev_item()
-				elseif require("luasnip").jumpable(-1) then
-					vim.fn.feedkeys(t("<Plug>luasnip-jump-prev"), "")
+				if require("luasnip").jumpable(-1) then
+					vim.fn.feedkeys(vim.api.nvim_replace_termcodes("<Plug>luasnip-jump-prev", true, true, true), "")
 				else
 					fallback()
 				end
@@ -162,9 +171,11 @@ return function()
 		},
 		-- You should specify your *installed* sources.
 		sources = {
-			{ name = "nvim_lsp", max_item_count = 350 },
-			{ name = "nvim_lua" },
 			{ name = "luasnip" },
+			{ name = "copilot" },
+			{ name = "nvim_lsp" },
+			{ name = "jupynium" },
+			{ name = "nvim_lua" },
 			{ name = "path" },
 			{ name = "treesitter" },
 			{ name = "spell" },
@@ -172,7 +183,6 @@ return function()
 			{ name = "orgmode" },
 			{ name = "buffer" },
 			{ name = "latex_symbols" },
-			{ name = "copilot" },
 			-- { name = "codeium" },
 			-- { name = "cmp_tabnine" },
 		},

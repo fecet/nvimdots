@@ -26,6 +26,7 @@ return vim.schedule_wrap(function()
 			"vimdoc",
 			"vue",
 			"yaml",
+            "cuda"
 		},
 		highlight = {
 			enable = true,
@@ -37,7 +38,7 @@ return vim.schedule_wrap(function()
 				local ok, is_large_file = pcall(vim.api.nvim_buf_get_var, bufnr, "bigfile_disable_treesitter")
 				return ok and is_large_file
 			end,
-			additional_vim_regex_highlighting = { "c", "cpp" },
+			additional_vim_regex_highlighting = { "c", "cpp", "markdown" },
 		},
 		textobjects = {
 			select = {
@@ -53,11 +54,11 @@ return vim.schedule_wrap(function()
 				enable = true,
 				set_jumps = true, -- whether to set jumps in the jumplist
 				goto_next_start = {
-					["]["] = "@function.outer",
+					["]]"] = "@function.outer",
 					["]m"] = "@class.outer",
 				},
 				goto_next_end = {
-					["]]"] = "@function.outer",
+					["]["] = "@function.outer",
 					["]M"] = "@class.outer",
 				},
 				goto_previous_start = {

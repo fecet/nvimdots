@@ -263,7 +263,7 @@ return function()
 			section_separators = { left = "", right = "" },
 		},
 		sections = {
-			lualine_a = { "mode" },
+			lualine_a = { "fancy_mode" },
 			lualine_b = {
 				{
 					"filetype",
@@ -300,6 +300,7 @@ return function()
 				},
 
 				{ utils.force_centering },
+				{ "fancy_cwd", substitute_home = true },
 				{
 					"diagnostics",
 					sources = { "nvim_diagnostic" },
@@ -320,6 +321,13 @@ return function()
 					padding = { left = 1 },
 					cond = conditionals.has_enough_room,
 				},
+				{ "fancy_macro" },
+			},
+			lualine_y = {
+				-- { "filetype", colored = true, icon_only = true },
+				{ "fancy_filetype" },
+				components.python_venv,
+				{ "encoding" },
 				{
 					"fileformat",
 					symbols = {
@@ -329,12 +337,7 @@ return function()
 					},
 					padding = { left = 1 },
 				},
-				components.tabwidth,
-			},
-			lualine_y = {
-				components.separator,
-				components.python_venv,
-				components.cwd,
+				-- components.tabwidth,
 			},
 			lualine_z = { components.file_location },
 		},

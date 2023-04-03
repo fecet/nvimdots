@@ -13,8 +13,8 @@ local mapping = {}
 function mapping.lsp(buf)
 	local map = {
 		-- LSP-related keymaps, work only when event = { "InsertEnter", "LspStart" }
-		["n|<leader>li"] = map_cr("LspInfo"):with_buffer(buf):with_desc("lsp: Info"),
-		["n|<leader>lr"] = map_cr("LspRestart"):with_buffer(buf):with_nowait():with_desc("lsp: Restart"),
+		-- ["n|<leader>li"] = map_cr("LspInfo"):with_buffer(buf):with_desc("lsp: Info"),
+		-- ["n|<leader>lr"] = map_cr("LspRestart"):with_buffer(buf):with_nowait():with_desc("lsp: Restart"),
 		["n|go"] = map_cr("SymbolsOutline"):with_buffer(buf):with_desc("lsp: Toggle outline"),
 		["n|g["] = map_cr("Lspsaga diagnostic_jump_prev"):with_buffer(buf):with_desc("lsp: Prev diagnostic"),
 		["n|g]"] = map_cr("Lspsaga diagnostic_jump_next"):with_buffer(buf):with_desc("lsp: Next diagnostic"),
