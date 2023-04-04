@@ -64,6 +64,7 @@ return function(options)
 			"--completion-style=detailed",
 			"--header-insertion-decorators",
 			"--header-insertion=iwyu",
+            "--cross-file-rename",
 		},
 		commands = {
 			ClangdSwitchSourceHeader = {
