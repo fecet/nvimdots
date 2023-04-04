@@ -8,7 +8,7 @@ editor["gcmt/wildfire.vim"] = {
 
 editor["Pocco81/auto-save.nvim"] = {
 	lazy = true,
-	event = "VeryLazy",
+	event = "BufRead",
 	config = require("editor.autosave"),
 }
 
