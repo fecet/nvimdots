@@ -30,8 +30,17 @@ completion["hrsh7th/nvim-cmp"] = {
 	dependencies = {
 		{
 			"L3MON4D3/LuaSnip",
-			dependencies = { "rafamadriz/friendly-snippets" },
+			-- dependencies = { "rafamadriz/friendly-snippets" },
+			dependencies = { "fecet/vim-snippets" },
 			config = require("completion.luasnip"),
+		},
+		{
+			"fecet/luasnips-mathtex-snippets",
+			dependencies = { "preservim/vim-markdown" },
+			config = function()
+				require("luasnip-latex-snippets").setup({ use_treesitter = true })
+			end,
+			ft = { "tex", "markdown", "rmd", "qmd" },
 		},
 		{ "onsails/lspkind.nvim" },
 		{ "lukas-reineke/cmp-under-comparator" },
