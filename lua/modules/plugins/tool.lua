@@ -17,17 +17,23 @@ tool["folke/which-key.nvim"] = {
 -- 	cond = vim.fn.executable("fcitx5-remote") == 1,
 -- 	config = require("tool.fcitx5"),
 -- }
-tool["nvim-tree/nvim-tree.lua"] = {
+tool["kevinhwang91/rnvimr"] = {
 	lazy = true,
-	cmd = {
-		"NvimTreeToggle",
-		"NvimTreeOpen",
-		"NvimTreeFindFile",
-		"NvimTreeFindFileToggle",
-		"NvimTreeRefresh",
-	},
-	config = require("tool.nvim-tree"),
+	cmd = "RnvimrToggle",
+	config = require("tool.rnvimr"),
 }
+
+-- tool["nvim-tree/nvim-tree.lua"] = {
+-- 	lazy = true,
+-- 	cmd = {
+-- 		"NvimTreeToggle",
+-- 		"NvimTreeOpen",
+-- 		"NvimTreeFindFile",
+-- 		"NvimTreeFindFileToggle",
+-- 		"NvimTreeRefresh",
+-- 	},
+-- 	config = require("tool.nvim-tree"),
+-- }
 tool["ibhagwan/smartyank.nvim"] = {
 	lazy = true,
 	event = "BufReadPost",
