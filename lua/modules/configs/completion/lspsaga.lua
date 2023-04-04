@@ -47,10 +47,14 @@ return function()
 			},
 		},
 		definition = {
-			edit = "<C-c>o",
-			vsplit = "<C-c>v",
-			split = "<C-c>s",
-			tabe = "<C-c>t",
+			-- edit = "<C-c>o",
+			-- vsplit = "<C-c>v",
+			-- split = "<C-c>s",
+			-- tabe = "<C-c>t",
+			edit = "<CR>",
+			vsplit = "s",
+			split = "i",
+			tabe = "t",
 			quit = "q",
 		},
 		code_action = {

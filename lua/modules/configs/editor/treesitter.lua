@@ -53,11 +53,11 @@ return vim.schedule_wrap(function()
 				enable = true,
 				set_jumps = true, -- whether to set jumps in the jumplist
 				goto_next_start = {
-					["]["] = "@function.outer",
+					["]]"] = "@function.outer",
 					["]m"] = "@class.outer",
 				},
 				goto_next_end = {
-					["]]"] = "@function.outer",
+					["]["] = "@function.outer",
 					["]M"] = "@class.outer",
 				},
 				goto_previous_start = {
@@ -74,6 +74,13 @@ return vim.schedule_wrap(function()
 			enable = true,
 			extended_mode = true, -- Highlight also non-parentheses delimiters, boolean or table: lang -> boolean
 			max_file_lines = 2000, -- Do not enable for files with more than 2000 lines, int
+			colors = {
+				"#8be9fd",
+				"#50fa7b",
+				"#ffb86c",
+				"#ff79c6",
+				"#bd93f9",
+			}, -- table of hex strings
 		},
 		context_commentstring = { enable = true, enable_autocmd = false },
 		matchup = { enable = true },

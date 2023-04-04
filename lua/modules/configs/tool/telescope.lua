@@ -58,9 +58,9 @@ return function()
 						-- you want to use the following actions. This means installing as a dependency of
 						-- telescope in it's `requirements` and loading this extension from there instead of
 						-- having the separate plugin definition as outlined above. See issue #6.
-						["<cr>"] = require("telescope-undo.actions").yank_additions,
-						["<S-cr>"] = require("telescope-undo.actions").yank_deletions,
-						["<C-cr>"] = require("telescope-undo.actions").restore,
+						-- ["<cr>"] = require("telescope-undo.actions").yank_additions,
+						-- ["<S-cr>"] = require("telescope-undo.actions").yank_deletions,
+						["<cr>"] = require("telescope-undo.actions").restore,
 					},
 				},
 			},

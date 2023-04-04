@@ -8,11 +8,15 @@ local et = bind.escape_termcode
 local plug_map = {
 	-- Plugin: accelerate-jk
 	["n|j"] = map_callback(function()
-		return et("<Plug>(accelerated_jk_gj)")
-	end):with_expr(),
+			return et("<Plug>(accelerated_jk_gj)")
+		end)
+		:with_expr()
+		:with_noremap(),
 	["n|k"] = map_callback(function()
-		return et("<Plug>(accelerated_jk_gk)")
-	end):with_expr(),
+			return et("<Plug>(accelerated_jk_gk)")
+		end)
+		:with_expr()
+		:with_noremap(),
 
 	-- Plugin: auto_session
 	["n|<leader>ss"] = map_cu("SaveSession"):with_noremap():with_silent():with_desc("session: Save"),
@@ -73,8 +77,7 @@ local plug_map = {
 
 	-- Plugin: hop
 	["nv|<leader>w"] = map_cmd("<Cmd>HopWord<CR>"):with_noremap():with_desc("jump: Goto word"),
-	["nv|<leader>j"] = map_cmd("<Cmd>HopLine<CR>"):with_noremap():with_desc("jump: Goto line"),
-	["nv|<leader>k"] = map_cmd("<Cmd>HopLine<CR>"):with_noremap():with_desc("jump: Goto line"),
+	["nv|<leader>l"] = map_cmd("<Cmd>HopLine<CR>"):with_noremap():with_desc("jump: Goto line"),
 	["nv|<leader>c"] = map_cmd("<Cmd>HopChar1<CR>"):with_noremap():with_desc("jump: Goto one char"),
 	["nv|<leader>cc"] = map_cmd("<Cmd>HopChar2<CR>"):with_noremap():with_desc("jump: Goto two chars"),
 
@@ -82,8 +85,11 @@ local plug_map = {
 	["o|m"] = map_cu("lua require('tsht').nodes()"):with_silent():with_desc("jump: Operate across syntax tree"),
 
 	-- Plugin: tabout
-	["i|<A-l>"] = map_cmd("<Plug>(TaboutMulti)"):with_silent():with_noremap():with_desc("edit: Goto end of pair"),
-	["i|<A-h>"] = map_cmd("<Plug>(TaboutBackMulti)"):with_silent():with_noremap():with_desc("edit: Goto begin of pair"),
+	["i|<tab>"] = map_cmd("<Plug>(TaboutMulti)"):with_silent():with_noremap():with_desc("edit: Goto end of pair"),
+	["i|<s-tab>"] = map_cmd("<Plug>(TaboutBackMulti)")
+		:with_silent()
+		:with_noremap()
+		:with_desc("edit: Goto begin of pair"),
 }
 
 bind.nvim_load_mapping(plug_map)
