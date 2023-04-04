@@ -75,8 +75,11 @@ local leader_map = function()
 end
 
 local neovide_config = function()
-	vim.api.nvim_set_option_value("guifont", "JetBrainsMono Nerd Font:h15", {})
-	vim.g.neovide_refresh_rate = 120
+	local font = "Liga SFMonoNerdFont"
+	-- local font = "JetBrainsMono Nerd Font"
+	local fontsize = 30
+	vim.api.nvim_set_option_value("guifont", font .. ":h" .. fontsize, {})
+	vim.g.neovide_refresh_rate = 138
 	vim.g.neovide_cursor_vfx_mode = "railgun"
 	vim.g.neovide_no_idle = true
 	vim.g.neovide_cursor_animation_length = 0.03
