@@ -1,10 +1,17 @@
 local ui = {}
 
-ui["goolord/alpha-nvim"] = {
+-- ui["goolord/alpha-nvim"] = {
+-- 	lazy = true,
+-- 	event = "BufWinEnter",
+-- 	config = require("ui.alphas"),
+-- }
+ui["glepnir/dashboard-nvim"] = {
 	lazy = true,
-	event = "BufWinEnter",
-	config = require("ui.alpha"),
+	event = "VimEnter",
+	config = require("ui.dashboard"),
+	dependencies = { { "nvim-tree/nvim-web-devicons" } },
 }
+
 ui["akinsho/bufferline.nvim"] = {
 	lazy = true,
 	event = { "BufReadPost", "BufAdd", "BufNewFile" },
@@ -15,6 +22,9 @@ ui["catppuccin/nvim"] = {
 	name = "catppuccin",
 	config = require("ui.catppuccin"),
 }
+-- ui["folke/tokyonight.nvim"] = {
+-- 	lazy = false,
+-- }
 ui["sainnhe/edge"] = {
 	lazy = true,
 	config = require("ui.edge"),
@@ -44,11 +54,11 @@ ui["zbirenbaum/neodim"] = {
 	event = "LspAttach",
 	config = require("ui.neodim"),
 }
-ui["karb94/neoscroll.nvim"] = {
-	lazy = true,
-	event = "BufReadPost",
-	config = require("ui.neoscroll"),
-}
+-- ui["karb94/neoscroll.nvim"] = {
+-- 	lazy = true,
+-- 	event = "BufReadPost",
+-- 	config = require("ui.neoscroll"),
+-- }
 ui["shaunsingh/nord.nvim"] = {
 	lazy = true,
 	config = require("ui.nord"),
@@ -63,11 +73,11 @@ ui["folke/paint.nvim"] = {
 	event = { "CursorHold", "CursorHoldI" },
 	config = require("ui.paint"),
 }
-ui["dstein64/nvim-scrollview"] = {
-	lazy = true,
-	event = "BufReadPost",
-	config = require("ui.scrollview"),
-}
+-- ui["dstein64/nvim-scrollview"] = {
+-- 	lazy = true,
+-- 	event = "BufReadPost",
+-- 	config = require("ui.scrollview"),
+-- }
 ui["edluffy/specs.nvim"] = {
 	lazy = true,
 	event = "CursorMoved",
