@@ -83,5 +83,19 @@ ui["edluffy/specs.nvim"] = {
 	event = "CursorMoved",
 	config = require("ui.specs"),
 }
+ui["eandrju/cellular-automaton.nvim"] = {
+	lazy = true,
+	cmd = "CellularAutomaton",
+}
+ui["tamton-aquib/zone.nvim"] = {
+	lazy = true,
+	event = "VeryLazy",
+	config = require("ui.zone"),
+}
+ui["letieu/hacker.nvim"] = {
+	lazy = true,
+    cmd={"Hack","HackFollow"},
+	config = require("ui.hack"),
+}
 
 return ui

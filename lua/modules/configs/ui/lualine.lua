@@ -47,6 +47,19 @@ return function()
 		end
 	end
 
+    local function shorten_path(path, max_len)
+        if #path <= max_len then
+            return path
+        end
+
+        local prefix_len = math.floor((max_len - 2) / 2)
+        local suffix_len = math.ceil((max_len - 2) / 2)
+
+        local prefix = string.sub(path, 1, prefix_len)
+        local suffix = string.sub(path, -suffix_len)
+
+        return prefix .. ".." .. suffix
+    end
 	local function get_cwd()
 		local cwd = vim.fn.getcwd()
 		local is_windows = require("core.global").is_windows
@@ -56,6 +69,7 @@ return function()
 				cwd = "~" .. cwd:sub(#home + 1)
 			end
 		end
+        cwd=shorten_path(cwd,16)
 		return icons.ui.RootFolderOpened .. cwd
 	end
 
