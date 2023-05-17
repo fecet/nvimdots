@@ -44,4 +44,9 @@ lang["untitled-ai/jupyter_ascending.vim"] = {
 	lazy = true,
 	ft = { "python" },
 }
+lang["Julian/lean.nvim"] = {
+	lazy = true,
+	ft = { "lean", "lean3" },
+	config = require("lang.lean"),
+}
 return lang
