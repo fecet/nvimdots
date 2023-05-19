@@ -145,6 +145,7 @@ local plug_map = {
 	["n|<leader>fd"] = map_cu("Telescope diagnostics"):with_noremap():with_silent():with_desc("find: diagnostics"),
 	["n|<leader>ft"] = map_cu("Telescope"):with_noremap():with_silent():with_desc("find: telescope"),
 	["n|<leader>fc"] = map_cu("Telescope commands"):with_noremap():with_silent():with_desc("find: commands"),
+	["n|<leader>fq"] = map_cu("Telescope macros"):with_noremap():with_silent():with_desc("find: macros"),
 
 	-- Plugin: dap
 	["n|<F6>"] = map_callback(function()

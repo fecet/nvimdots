@@ -70,6 +70,24 @@ tool["gelguy/wilder.nvim"] = {
 	dependencies = { "romgrk/fzy-lua-native" },
 }
 
+tool["ecthelionvi/NeoComposer.nvim"] = {
+	lazy = true,
+	dependencies = {
+		{ "kkharji/sqlite.lua" },
+	},
+	opts = {
+		keymaps = {
+			play_macro = "<leader>qp",
+			-- yank_macro = "yq",
+			-- stop_macro = "cq",
+			toggle_record = "<leader>qr",
+			cycle_next = "<F23>",
+			cycle_prev = "<F22>",
+			toggle_macro_menu = "<F24>",
+		},
+	},
+}
+
 ----------------------------------------------------------------------
 --                        Telescope Plugins                         --
 ----------------------------------------------------------------------
