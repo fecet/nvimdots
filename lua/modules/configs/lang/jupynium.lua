@@ -1,4 +1,4 @@
-return function ()
+return function()
 	require("jupynium").setup({
 		-- Conda users:
 		python_host = "/opt/mambaforge/bin/python",
@@ -69,13 +69,50 @@ return function ()
 		shortsighted = false,
 		auto_close_tab = false,
 	})
+	local select_current_cell = function()
+		local cells = require("jupynium.cells")
+		local row = vim.api.nvim_win_get_cursor(0)[1]
+		local current_separator_row = cells.current_cell_separator(row)
+		if current_separator_row == nil then
+			return
+		end
+		local start_row = current_separator_row + 1
+		local next_row = cells.next_cell_separator(row)
+		local end_row = nil
+		if next_row == nil then
+			end_row = vim.api.nvim_buf_line_count(0)
+		else
+			end_row = next_row - 1
+		end
+		local lines = vim.fn.getline(start_row, end_row)
+		-- return table.concat(lines, "\n")
+		return lines
+	end
+	local execute_current_cell = function()
+		if vim.g.is_iron_open == 1 then
+			local content = select_current_cell()
+			require("iron.core").send(nil, content)
+		else
+			vim.cmd("JupyniumExecuteSelectedCells")
+		end
+	end
+
+	local start_repl_cmd = function(args)
+		local hostname = args.args
+		local buf = vim.api.nvim_get_current_buf()
+		if Jupynium_get_kernel_connect_shcmd ~= nil then
+			vim.g.python_repl_cmd = Jupynium_get_kernel_connect_shcmd(buf, hostname)
+		end
+		require("iron").core.repl_for("python")
+	end
 
 	vim.api.nvim_create_autocmd({ "BufWinEnter" }, {
 		pattern = "*.ju.*",
 		callback = function()
 			local buf_id = vim.api.nvim_get_current_buf()
-			vim.keymap.set({ "n", "x" }, "<space><CR>", "<cmd>JupyniumExecuteSelectedCells<CR>", { buffer = buf_id })
-			vim.keymap.set({ "i", "n", "x" }, "<C-CR>", "<cmd>JupyniumExecuteSelectedCells<CR>", { buffer = buf_id })
+			vim.keymap.set({ "n", "x" }, "<space><CR>", execute_current_cell, { buffer = buf_id })
+			vim.keymap.set({ "i", "n", "x" }, "<C-CR>", execute_current_cell, { buffer = buf_id })
+			vim.api.nvim_create_user_command("JupyniumRepl", start_repl_cmd, { nargs = "?" })
 		end,
 	})
 

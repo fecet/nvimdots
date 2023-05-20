@@ -44,6 +44,12 @@ lang["untitled-ai/jupyter_ascending.vim"] = {
 	lazy = true,
 	ft = { "python" },
 }
+lang["hkupty/iron.nvim"] = {
+	lazy = true,
+	event = "BufReadPost",
+	-- ft = { "python" },
+	config = require("lang.iron"),
+}
 lang["Julian/lean.nvim"] = {
 	lazy = true,
 	ft = { "lean", "lean3" },
