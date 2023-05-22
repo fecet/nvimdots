@@ -41,7 +41,20 @@ return function()
 			qflist_previewer = require("telescope.previewers").vim_buffer_qflist.new,
 			file_sorter = require("telescope.sorters").get_fuzzy_file,
 			generic_sorter = require("telescope.sorters").get_generic_fuzzy_sorter,
-			buffer_previewer_maker = require("telescope.previewers").buffer_previewer_maker,
+			mappings = {
+				n = {
+					["<c-d>"] = require("telescope.actions").delete_buffer,
+				}, -- n
+				i = {
+					-- ["<C-h>"] = "which_key",
+					["<c-d>"] = require("telescope.actions").delete_buffer,
+				}, -- i
+			}, -- mappings
+		},
+		pickers = {
+			keymaps = {
+				theme = "dropdown",
+			},
 		},
 		extensions = {
 			fzf = {
