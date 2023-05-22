@@ -109,6 +109,7 @@ tool["nvim-telescope/telescope.nvim"] = {
 			{ "kkharji/sqlite.lua" },
 		} },
 		{ "jvgrootveld/telescope-zoxide" },
+		{ "nvim-telescope/telescope-symbols.nvim" },
 		{ "nvim-telescope/telescope-live-grep-args.nvim" },
 	},
 }

@@ -18,14 +18,6 @@ lang["Saecki/crates.nvim"] = {
 	config = require("lang.crates"),
 	dependencies = { "nvim-lua/plenary.nvim" },
 }
-lang["iamcco/markdown-preview.nvim"] = {
-	lazy = true,
-	ft = require("modules.utils.constants").markdown_family,
-	cmd = "MarkdownPreviewToggle",
-	-- build = ":call mkdp#util#install()",
-	init = require("lang.mkdp"),
-	-- config = require("lang.mkdp"),
-}
 lang["chrisbra/csv.vim"] = {
 	lazy = true,
 	ft = "csv",

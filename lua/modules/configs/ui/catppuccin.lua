@@ -92,6 +92,7 @@ return function()
 			vim_sneak = false,
 			vimwiki = false,
 			which_key = true,
+			headlines = true,
 		},
 		color_overrides = {},
 		highlight_overrides = {
