@@ -13,7 +13,7 @@ return function()
 		trigger_events = { "InsertLeave", "TextChanged" },
 		conditions = {
 			exists = true,
-			filetype_is_not = {},
+			filetype_is_not = {"oil"},
 			modifiable = true,
 		},
 		write_all_buffers = false,

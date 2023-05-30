@@ -139,5 +139,13 @@ tool["mfussenegger/nvim-dap"] = {
 		{ "jay-babu/mason-nvim-dap.nvim" },
 	},
 }
+tool["stevearc/oil.nvim"] = {
+	lazy = true,
+	-- ft = "oil",
+	event = "Syntax",
+	-- Optional dependencies
+	dependencies = { "nvim-tree/nvim-web-devicons" },
+	config = require("tool.oil"),
+}
 
 return tool
