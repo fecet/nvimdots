@@ -16,15 +16,18 @@ return {
 					},
 					ignore = {
 						-- ignore E501 (line too long)
-						-- "E501",
+						"E501",
 						-- ignore F401 (imported but unused)
-						-- "F401",
+						"E402",
 					},
 					extendSelect = { "I" },
 					severities = {
 						-- Hint, Information, Warning, Error
 						F401 = "I",
 						E501 = "I",
+						F403 = "I",
+						F841 = "I",
+						F811 = "I",
 					},
 				},
 				flake8 = { enabled = false },
