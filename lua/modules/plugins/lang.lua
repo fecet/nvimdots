@@ -32,10 +32,10 @@ lang["kiyoon/jupynium.nvim"] = {
 	config = require("lang.jupynium"),
 	dev = true,
 }
-lang["untitled-ai/jupyter_ascending.vim"] = {
-	lazy = true,
-	ft = { "python" },
-}
+-- lang["untitled-ai/jupyter_ascending.vim"] = {
+-- 	lazy = true,
+-- 	ft = { "python" },
+-- }
 lang["hkupty/iron.nvim"] = {
 	lazy = true,
 	event = "BufReadPost",
@@ -47,4 +47,11 @@ lang["Julian/lean.nvim"] = {
 	ft = { "lean", "lean3" },
 	config = require("lang.lean"),
 }
+
+-- lang["goerz/jupytext.vim"] = {
+-- 	-- event = "BufAdd *.ipynb",
+-- 	config = function()
+-- 		vim.g.jupytext_fmt = "py"
+-- 	end,
+-- }
 return lang

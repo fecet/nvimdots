@@ -19,7 +19,8 @@ ui["akinsho/bufferline.nvim"] = {
 }
 ui["Jint-lzxy/nvim"] = {
 	lazy = false,
-	branch = "refactor/syntax-highlighting",
+	dev = true,
+	-- branch = "refactor/syntax-highlighting",
 	name = "catppuccin",
 	config = require("ui.catppuccin"),
 }
@@ -74,24 +75,41 @@ ui["rcarriga/nvim-notify"] = {
 	event = "VeryLazy",
 	config = require("ui.notify"),
 }
-ui["folke/paint.nvim"] = {
-	lazy = true,
-	event = { "CursorHold", "CursorHoldI" },
-	config = require("ui.paint"),
-}
+-- ui["folke/paint.nvim"] = {
+-- 	lazy = true,
+-- 	event = { "CursorHold", "CursorHoldI" },
+-- 	config = require("ui.paint"),
+-- }
 -- ui["dstein64/nvim-scrollview"] = {
 -- 	lazy = true,
 -- 	event = "BufReadPost",
 -- 	config = require("ui.scrollview"),
 -- }
-ui["edluffy/specs.nvim"] = {
-	lazy = true,
-	event = "CursorMoved",
-	config = require("ui.specs"),
-}
+-- ui["edluffy/specs.nvim"] = {
+-- 	lazy = true,
+-- 	event = "CursorMoved",
+-- 	config = require("ui.specs"),
+-- }
 ui["fecet/fortune.nvim"] = {
 	lazy = true,
 	dev = true,
+}
+ui["folke/edgy.nvim"] = {
+	event = "VeryLazy",
+	-- opt = {},
+	config = require("ui.edgy"),
+}
+ui["HampusHauffman/block.nvim"] = {
+	lazy = true,
+	-- event = { "CursorHold", "CursorHoldI" },
+	cmd = { "Block" },
+	-- after=
+	config = function()
+		require("block").setup({
+			automatic = false,
+		})
+	end,
+	dependencies = { "nvim-treesitter/nvim-treesitter" },
 }
 
 return ui

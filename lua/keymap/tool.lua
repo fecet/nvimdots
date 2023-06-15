@@ -22,8 +22,8 @@ local plug_map = {
 	["n|<leader>ee"] = map_cr("RnvimrToggle"):with_noremap():with_silent():with_desc("ranger: toggle"),
 
 	-- Plugin: sniprun
-	["v|<leader>r"] = map_cr("SnipRun"):with_noremap():with_silent():with_desc("tool: Run code by range"),
-	["n|<leader>r"] = map_cu([[%SnipRun]]):with_noremap():with_silent():with_desc("tool: Run code by file"),
+	-- ["v|<leader>r"] = map_cr("SnipRun"):with_noremap():with_silent():with_desc("tool: Run code by range"),
+	-- ["n|<leader>r"] = map_cu([[%SnipRun]]):with_noremap():with_silent():with_desc("tool: Run code by file"),
 
 	-- Plugin: toggleterm
 	-- ["t|<Esc>"] = map_cmd([[<C-\><C-n>]]):with_silent(), -- switch to normal mode in terminal.

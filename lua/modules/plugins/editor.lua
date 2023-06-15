@@ -23,11 +23,11 @@ editor["kylechui/nvim-surround"] = {
 	config = require("editor.surround"),
 }
 
-editor["rainbowhxch/accelerated-jk.nvim"] = {
-	lazy = true,
-	event = "VeryLazy",
-	config = require("editor.accelerated-jk"),
-}
+-- editor["rainbowhxch/accelerated-jk.nvim"] = {
+-- 	lazy = true,
+-- 	event = "VeryLazy",
+-- 	config = require("editor.accelerated-jk"),
+-- }
 editor["olimorris/persisted.nvim"] = {
 	lazy = true,
 	cmd = {
@@ -75,10 +75,10 @@ editor["sindrets/diffview.nvim"] = {
 	lazy = true,
 	cmd = { "DiffviewOpen", "DiffviewClose" },
 }
-editor["junegunn/vim-easy-align"] = {
-	lazy = true,
-	cmd = "EasyAlign",
-}
+-- editor["junegunn/vim-easy-align"] = {
+-- 	lazy = true,
+-- 	cmd = "EasyAlign",
+-- }
 editor["smoka7/hop.nvim"] = {
 	lazy = true,
 	version = "*",
@@ -121,10 +121,10 @@ editor["nvim-treesitter/nvim-treesitter"] = {
 			"hiphish/rainbow-delimiters.nvim",
 			config = require("editor.rainbow_delims"),
 		},
-		{
-			"nvim-treesitter/nvim-treesitter-context",
-			config = require("editor.ts-context"),
-		},
+		-- {
+		-- 	"nvim-treesitter/nvim-treesitter-context",
+		-- 	config = require("editor.ts-context"),
+		-- },
 		{
 			"windwp/nvim-ts-autotag",
 			config = require("editor.autotag"),
