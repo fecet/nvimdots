@@ -99,6 +99,20 @@ editor["lambdalisue/suda.vim"] = {
 	cmd = { "SudaRead", "SudaWrite" },
 	config = require("editor.suda"),
 }
+editor["tzachar/highlight-undo.nvim"] = {
+	lazy = true,
+	event = "BufReadPost",
+	config = function()
+		require("highlight-undo").setup({
+			hlgroup = "HighlightUndo",
+			duration = 300,
+			keymaps = {
+				{ "n", "u", "undo", {} },
+				{ "n", "<C-r>", "redo", {} },
+			},
+		})
+	end,
+}
 
 ----------------------------------------------------------------------
 --                  :treesitter related plugins                    --
