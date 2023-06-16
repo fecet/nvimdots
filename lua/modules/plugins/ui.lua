@@ -103,12 +103,6 @@ ui["HampusHauffman/block.nvim"] = {
 	lazy = true,
 	-- event = { "CursorHold", "CursorHoldI" },
 	cmd = { "Block" },
-	-- after=
-	config = function()
-		require("block").setup({
-			automatic = false,
-		})
-	end,
 	dependencies = { "nvim-treesitter/nvim-treesitter" },
 }
 
