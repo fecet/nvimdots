@@ -192,4 +192,45 @@ return function()
 			},
 		},
 	})
+	local cmdline_maps = vim.tbl_deep_extend("force", cmp.mapping.preset.cmdline(), {
+		-- ["<Down>"] = {
+		-- 	c = function(fallback)
+		-- 		if cmp.visible() then
+		-- 			cmp.select_next_item()
+		-- 		else
+  --                   fallback()
+		-- 		end
+		-- 	end,
+		-- },
+		-- ["<Up>"] = {
+		-- 	c = function(fallback)
+		-- 		if cmp.visible() then
+		-- 			cmp.select_prev_item()
+		-- 		else
+		-- 			fallback()
+		-- 		end
+		-- 	end,
+		-- },
+	})
+	-- `/` cmdline setup.
+	cmp.setup.cmdline("/", {
+		mapping = cmdline_maps,
+		sources = {
+			{ name = "buffer" },
+		},
+	})
+	-- `:` cmdline setup.
+	cmp.setup.cmdline(":", {
+		mapping = cmdline_maps,
+		sources = cmp.config.sources({
+			{ name = "path" },
+		}, {
+			{
+				name = "cmdline",
+				option = {
+					ignore_cmds = { "Man", "!" },
+				},
+			},
+		}),
+	})
 end
