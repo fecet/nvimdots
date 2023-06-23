@@ -147,5 +147,9 @@ tool["stevearc/oil.nvim"] = {
 	dependencies = { "nvim-tree/nvim-web-devicons" },
 	config = require("tool.oil"),
 }
+tool["AndrewRadev/bufferize.vim"] = {
+	lazy = true,
+	cmd = "Bufferize",
+}
 
 return tool
