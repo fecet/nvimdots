@@ -30,9 +30,9 @@ return function()
 			toggle_preview = "P", -- toggle auto_preview
 			hover = "K", -- opens a small popup with the full multiline message
 			preview = "p", -- preview the diagnostic location
-			close_folds = { "zM", "zm" }, -- close all folds
-			open_folds = { "zR", "zr" }, -- open all folds
-			toggle_fold = { "zA", "za" }, -- toggle fold of current file
+			-- close_folds = { "zM", "zm" }, -- close all folds
+			-- open_folds = { "zR", "zr" }, -- open all folds
+			-- toggle_fold = { "zA", "za" }, -- toggle fold of current file
 			previous = "k", -- preview item
 			next = "j", -- next item
 		},

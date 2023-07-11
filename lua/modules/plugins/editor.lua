@@ -61,11 +61,11 @@ editor["ojroques/nvim-bufdel"] = {
 	lazy = true,
 	cmd = { "BufDel", "BufDelAll", "BufDelOthers" },
 }
-editor["rhysd/clever-f.vim"] = {
-	lazy = true,
-	event = { "CursorHold", "CursorHoldI" },
-	config = require("editor.cleverf"),
-}
+-- editor["rhysd/clever-f.vim"] = {
+-- 	lazy = true,
+-- 	event = { "CursorHold", "CursorHoldI" },
+-- 	config = require("editor.cleverf"),
+-- }
 editor["numToStr/Comment.nvim"] = {
 	lazy = true,
 	event = { "CursorHold", "CursorHoldI" },
@@ -114,17 +114,56 @@ editor["tzachar/highlight-undo.nvim"] = {
 	end,
 }
 
+editor["kevinhwang91/nvim-ufo"] = {
+	lazy = true,
+	event = { "BufReadPost" },
+	config = require("editor.ufo"),
+	keys = {
+		{
+			"<leader>zo",
+			function()
+				require("ufo").openAllFolds()
+			end,
+		},
+		{
+			"<leader>zc",
+			function()
+				require("ufo").closeAllFolds()
+			end,
+		},
+	},
+	dependencies = {
+		"kevinhwang91/promise-async",
+		{
+			"luukvbaal/statuscol.nvim",
+			config = function()
+				local builtin = require("statuscol.builtin")
+				require("statuscol").setup({
+					-- foldfunc = "builtin",
+					-- setopt = true,
+					relculright = true,
+					segments = {
+						{ text = { builtin.foldfunc }, click = "v:lua.ScFa" },
+						{ text = { "%s" }, click = "v:lua.ScSa" },
+						{ text = { builtin.lnumfunc, " " }, click = "v:lua.ScLa" },
+					},
+				})
+			end,
+		},
+		{ "chrisgrieser/nvim-origami", opts = true, lazy = true },
+	},
+}
 ----------------------------------------------------------------------
 --                  :treesitter related plugins                    --
 ----------------------------------------------------------------------
 editor["nvim-treesitter/nvim-treesitter"] = {
-	lazy = true,
+	-- lazy = true,
 	build = function()
 		if #vim.api.nvim_list_uis() ~= 0 then
 			vim.api.nvim_command("TSUpdate")
 		end
 	end,
-	event = "BufReadPost",
+	-- event = "BufReadPost",
 	config = require("editor.treesitter"),
 	dependencies = {
 		{ "nvim-treesitter/nvim-treesitter-textobjects" },
@@ -154,7 +193,21 @@ editor["nvim-treesitter/nvim-treesitter"] = {
 		{
 			"nvim-treesitter/playground",
 		},
+		{ "sustech-data/wildfire.nvim", dev = true, lazy = true },
+		{ "ziontee113/syntax-tree-surfer", config = require("editor.surfer") },
+		{
+			"lukas-reineke/headlines.nvim",
+			lazy = true,
+			ft = require("modules.utils.constants").markdown_family,
+			config = require("note.headline"),
+		},
+		{ "filNaj/tree-setter" },
 	},
 }
+
+-- editor["00sapo/visual.nvim"] = {
+-- 	-- event = "VeryLazy",
+-- 	-- lazy = true,
+-- }
 
 return editor
