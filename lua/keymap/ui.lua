@@ -6,6 +6,7 @@ local map_callback = bind.map_callback
 
 local plug_map = {
 	-- Plugin: bufferline
+	["n|<leader>ip"] = map_cr("Inspect"):with_noremap():with_silent():with_desc("buffer: Switch to next"),
 	["n|<C-L>"] = map_cr("BufferLineCycleNext"):with_noremap():with_silent():with_desc("buffer: Switch to next"),
 	["n|<C-S-l>"] = map_cr("BufferLineCycleNext"):with_noremap():with_silent():with_desc("buffer: Switch to next"),
 	["n|<C-H>"] = map_cr("BufferLineCyclePrev"):with_noremap():with_silent():with_desc("buffer: Switch to prev"),

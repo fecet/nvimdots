@@ -107,9 +107,7 @@ local plug_map = {
 		:with_noremap()
 		:with_silent()
 		:with_desc("edit: Show undo history"),
-	["n|<leader>fp"] = map_callback(function()
-			require("telescope").extensions.projects.projects({})
-		end)
+	["n|<leader>fp"] = map_cu("Telescope persisted")
 		:with_noremap()
 		:with_silent()
 		:with_desc("find: Project"),
@@ -131,7 +129,7 @@ local plug_map = {
 	-- 	:with_noremap()
 	-- 	:with_silent()
 	-- 	:with_desc("ui: Change colorscheme for current session"),
-	["n|<leader>fn"] = map_cu(":enew"):with_noremap():with_silent():with_desc("buffer: New"),
+	-- ["n|<leader>fn"] = map_cu(":enew"):with_noremap():with_silent():with_desc("buffer: New"),
 	["n|<leader>fg"] = map_cu("Telescope git_files")
 		:with_noremap()
 		:with_silent()
