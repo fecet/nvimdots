@@ -7,6 +7,10 @@ return function()
 	local mason = require("mason")
 	local mason_registry = require("mason-registry")
 	local mason_lspconfig = require("mason-lspconfig")
+	local sources = require("mason-registry.sources")
+	require("completion.providers.python")
+
+	sources.set_registries({ "lua:mason-registry.index" })
 	require("lspconfig.ui.windows").default_options.border = "rounded"
 
 	local icons = {
@@ -120,33 +124,58 @@ return function()
 	})
 
 	local opts = {
-		capabilities = require("cmp_nvim_lsp").default_capabilities(vim.lsp.protocol.make_client_capabilities()),
+		capabilities = capabilities,
 	}
+	local lsp_deps = require("core.settings").lsp_deps
+	-- local index_to_remove
+	-- for i, value in ipairs(lsp_deps) do
+	-- 	if value == "pylance" then
+	-- 		-- nvim_lsp.pylance.setup(vim.tbl_deep_extend("force", opts, require("completion.python.pylance")))
+	-- 		index_to_remove = i
+	-- 		break
+	-- 	end
+	-- end
+	-- if index_to_remove then
+	-- 	table.remove(lsp_deps, index_to_remove)
+	-- end
+
+	mason_lspconfig.setup({
+		ensure_installed = vim.tbl_filter(function(lsp_name)
+			return lsp_name ~= "pylance"
+		end, lsp_deps),
+	})
+
+	if vim.tbl_contains(lsp_deps, "pylance") then
+		nvim_lsp.pylance.setup(vim.tbl_deep_extend("force", opts, require("completion.servers.pylance")))
+	end
+
 	---A handler to setup all servers defined under `completion/servers/*.lua`
 	---@param lsp_name string
 	local function mason_lsp_handler(lsp_name)
-		local ok, custom_handler = pcall(require, "completion.servers." .. lsp_name)
-		if not ok then
-			-- Default to use factory config for server(s) that doesn't include a spec
-			nvim_lsp[lsp_name].setup(opts)
-			return
-		elseif type(custom_handler) == "function" then
-			--- Case where language server requires its own setup
-			--- Make sure to call require("lspconfig")[lsp_name].setup() in the function
-			--- See `clangd.lua` for example.
-			custom_handler(opts)
-		elseif type(custom_handler) == "table" then
-			nvim_lsp[lsp_name].setup(vim.tbl_deep_extend("force", opts, custom_handler))
-		else
-			vim.notify(
-				string.format(
-					"Failed to setup [%s].\n\nServer definition under `completion/servers` must return\neither a fun(opts) or a table (got '%s' instead)",
-					lsp_name,
-					type(custom_handler)
-				),
-				vim.log.levels.ERROR,
-				{ title = "nvim-lspconfig" }
-			)
+		if vim.tbl_contains(lsp_deps, lsp_name) then
+			local ok, custom_handler = pcall(require, "completion.servers." .. lsp_name)
+			if not ok then
+				-- Default to use factory config for server(s) that doesn't include a spec
+				nvim_lsp[lsp_name].setup(opts)
+				return
+			elseif type(custom_handler) == "function" then
+				--- Case where language server requires its own setup
+				--- Make sure to call require("lspconfig")[lsp_name].setup() in the function
+				--- See `clangd.lua` for example.
+				custom_handler(opts)
+			elseif type(custom_handler) == "table" then
+				nvim_lsp[lsp_name].setup(vim.tbl_deep_extend("force", opts, custom_handler))
+			else
+				vim.notify(
+					string.format(
+						"Failed to setup [%s].\n\nServer definition under `completion/servers` must return\neither a fun(opts) or a table (got '%s' instead)",
+						lsp_name,
+						type(custom_handler)
+					),
+					vim.log.levels.ERROR,
+					{ title = "nvim-lspconfig" }
+				)
+			end
 		end
 	end
 

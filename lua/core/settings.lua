@@ -91,7 +91,9 @@ settings["lsp_deps"] = {
 	"html",
 	"jsonls",
 	"lua_ls",
-	"pylsp",
+	-- "pylsp",
+    -- "pyright",
+    "pylance",
 	-- "gopls",
 }
 
@@ -106,6 +108,7 @@ settings["null_ls_deps"] = {
 	"shfmt",
 	"stylua",
 	"vint",
+    "black"
 }
 
 -- Set the Debug Adapter Protocol (DAP) clients that will be installed and configured during bootstrap here.
