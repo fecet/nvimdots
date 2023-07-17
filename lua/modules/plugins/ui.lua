@@ -17,7 +17,7 @@ ui["akinsho/bufferline.nvim"] = {
 	event = { "BufReadPost", "BufAdd", "BufNewFile" },
 	config = require("ui.bufferline"),
 }
-ui["Jint-lzxy/nvim"] = {
+ui["catppuccin/nvim"] = {
 	lazy = false,
 	dev = true,
 	-- branch = "refactor/syntax-highlighting",
