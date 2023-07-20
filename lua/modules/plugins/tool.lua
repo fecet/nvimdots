@@ -152,4 +152,12 @@ tool["AndrewRadev/bufferize.vim"] = {
 	cmd = "Bufferize",
 }
 
+tool["subnut/nvim-ghost.nvim"] = {
+	lazy = true,
+	cmd = "GhostTextStart",
+	init = function()
+		vim.g.nvim_ghost_autostart = 0
+	end,
+}
+
 return tool
