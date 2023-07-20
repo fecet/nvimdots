@@ -103,6 +103,21 @@ function autocmd.load_autocmds()
 			-- {"BufCreate", "*", ":silent !fcitx5-remote -c"},
 			-- {"BufEnter", "*", ":silent !fcitx5-remote -c "},
 			-- {"BufLeave", "*", ":silent !fcitx5-remote -c "}
+			{
+				"BufNewFile,BufRead",
+				".xinitrc",
+				"setfiletype sh",
+			},
+			{
+				"BufNewFile,BufRead",
+				".histfile",
+				"setfiletype sh",
+			},
+			-- {
+			-- 	"BufNewFile,BufRead",
+			-- 	".histfile",
+			-- 	"setfiletype sh",
+			-- },
 		},
 		wins = {
 			-- Highlight current line only on focused window
