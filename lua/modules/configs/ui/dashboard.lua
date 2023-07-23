@@ -4,11 +4,7 @@ return function()
 		local colors = { "Keyword", "Constant", "Number", "Type", "String", "Special", "Function" }
 		return colors[wday]
 	end
-	-- vim.cmd("highlight link DashboardHeader " .. header_hl_today())
-	-- vim.cmd("highlight link DashboardFooter " .. "Function")
-	-- vim.cmd("highlight link DashboardMruTitle " .. "Error")
-	-- vim.cmd("highlight link DashboardProjectTitle " .. "Error")
-	-- vim.cmd("highlight link DashboardFiles " .. "String")
+	vim.cmd("highlight link DashboardHeader " .. header_hl_today())
 
 	local function header()
 		local str = "   Have Fun with neovim"
@@ -28,7 +24,9 @@ return function()
 		return vim.list_extend({ "", str, "" }, require("fortune").fortune(true))
 	end
 	local function project_action(path)
-		return require("telescope.builtin").find_files({ cwd = path })
+		-- return require("telescope.builtin").find_files({ cwd = path })
+        vim.api.nvim_set_current_dir(path)
+		return require("persisted").load()
 	end
 	require("dashboard").setup({
 		theme = "hyper",
