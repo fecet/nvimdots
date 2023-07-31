@@ -46,6 +46,9 @@ return function()
 					warnings = { "underline" },
 					information = { "underline" },
 				},
+				inlay_hints = {
+					background = false,
+				},
 			},
 			aerial = false,
 			alpha = false,

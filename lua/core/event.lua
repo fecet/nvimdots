@@ -17,8 +17,26 @@ local mapping = require("keymap.completion")
 vim.api.nvim_create_autocmd("LspAttach", {
 	group = vim.api.nvim_create_augroup("LspKeymapLoader", { clear = true }),
 	callback = function(event)
-		if not _G._debugging then
-			mapping.lsp(event.buf)
+		mapping.lsp(event.buf)
+		-- local client = vim.lsp.get_client_by_id(event.data.client_id)
+		-- if client.server_capabilities.inlayHintProvider then
+		-- 	vim.g.inlay_hints_visible = true
+		-- 	vim.lsp.inlay_hint(event.buf, true)
+		-- end
+		vim.g.inlay_hints_visible = false
+		local client = vim.lsp.get_client_by_id(event.data.client_id)
+		local bufnr = event.buf
+		if client.server_capabilities.inlayHintProvider then
+			local function toggle_inlay_hints()
+				if vim.g.inlay_hints_visible then
+					vim.g.inlay_hints_visible = false
+					vim.lsp.inlay_hint(bufnr, false)
+				else
+					vim.g.inlay_hints_visible = true
+					vim.lsp.inlay_hint(bufnr, true)
+				end
+			end
+			vim.keymap.set("n", "<leader>ti", toggle_inlay_hints, { noremap = true, silent = true, buffer = bufnr })
 		end
 	end,
 })
