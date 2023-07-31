@@ -48,10 +48,14 @@ lang["Julian/lean.nvim"] = {
 	config = require("lang.lean"),
 }
 
--- lang["goerz/jupytext.vim"] = {
--- 	-- event = "BufAdd *.ipynb",
--- 	config = function()
--- 		vim.g.jupytext_fmt = "py"
--- 	end,
--- }
+lang["wookayin/semshi"] = {
+	lazy = true,
+	ft = { "python" },
+	cond = not vim.tbl_contains(require("core.settings").lsp_deps, "pylance"),
+	config = require("lang.semshi"),
+}
+lang["goerz/jupytext.vim"] = {
+	-- event = "BufAdd *.ipynb",
+	init = require("lang.jupytext")
+}
 return lang
