@@ -111,6 +111,7 @@ tool["nvim-telescope/telescope.nvim"] = {
 		{ "jvgrootveld/telescope-zoxide" },
 		{ "nvim-telescope/telescope-symbols.nvim" },
 		{ "nvim-telescope/telescope-live-grep-args.nvim" },
+		{ "IllustratedMan-code/telescope-conda.nvim" },
 	},
 }
 

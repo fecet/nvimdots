@@ -92,6 +92,7 @@ return function()
 					},
 				},
 			},
+			conda = { anaconda_path = "~/.conda" },
 		},
 	})
 
@@ -102,6 +103,6 @@ return function()
 	require("telescope").load_extension("projects")
 	require("telescope").load_extension("undo")
 	require("telescope").load_extension("zoxide")
-    require("telescope").load_extension("persisted")
+	require("telescope").load_extension("persisted")
 	require("telescope").load_extension("macros")
 end
