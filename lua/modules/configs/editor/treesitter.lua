@@ -26,8 +26,9 @@ return vim.schedule_wrap(function()
 			"vimdoc",
 			"vue",
 			"yaml",
-            "cuda"
+			"cuda",
 		},
+		indent = { enable = true },
 		highlight = {
 			enable = true,
 			disable = function(ft, bufnr)
