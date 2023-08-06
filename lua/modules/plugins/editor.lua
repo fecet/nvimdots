@@ -1,11 +1,5 @@
 local editor = {}
 
--- editor["gcmt/wildfire.vim"] = {
--- 	lazy = true,
--- 	event = "VeryLazy",
--- 	init = require("editor.wildfire"),
--- }
-
 editor["Pocco81/auto-save.nvim"] = {
 	lazy = true,
 	event = "BufRead",
@@ -204,10 +198,5 @@ editor["nvim-treesitter/nvim-treesitter"] = {
 		{ "filNaj/tree-setter" },
 	},
 }
-
--- editor["00sapo/visual.nvim"] = {
--- 	-- event = "VeryLazy",
--- 	-- lazy = true,
--- }
 
 return editor

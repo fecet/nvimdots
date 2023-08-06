@@ -95,7 +95,6 @@ local plug_map = {
 		require("wildfire").init_selection()
 	end):with_silent(),
 	["x|<CR>"] = map_cr(":lua require'wildfire'.node_incremental()"):with_silent(),
-	-- ["x|<CR>"] = map_cr(":lua require'nvim-treesitter.incremental_selection'.node_incremental()"):with_silent(),
 	["x|-"] = map_cr(":lua require'wildfire'.visual_inner()"):with_silent(),
 }
 
