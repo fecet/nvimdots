@@ -21,14 +21,16 @@ local core_map = {
 	["n|<A-S-q>"] = map_cmd(":q!<CR>"):with_desc("editn: Force quit"),
 	["n|<leader>o"] = map_cr("setlocal spell! spelllang=en_us"):with_desc("editn: Toggle spell check"),
 	-- Insert mode
-	["i|<C-u>"] = map_cr("<C-G>u<C-U>")
-		:with_noremap()
-		:with_desc("editi: Delete previous block"),
+	["i|<C-u>"] = map_cr("<C-G>u<C-U>"):with_noremap():with_desc("editi: Delete previous block"),
 	-- ["i|<C-b>"] = map_cmd("<Left>"):with_noremap():with_desc("editi: Move cursor to left"),
 	-- ["i|<C-a>"] = map_cmd("<ESC>^i"):with_noremap():with_desc("editi: Move cursor to line start"),
 	["i|<C-s>"] = map_cmd("<Esc>:w<CR>"):with_desc("editi: Save file"),
+	["i|<C-r>"] = map_cmd("<C-o>u"):with_desc("editi: Save file"),
 	-- ["i|<C-w>"] = map_cmd("<Esc>:set iskeyword=@,48-57,192-255<CR>a<C-G>u<C-W><ESC>:set iskeyword=@,48-57,_,192-255<CR>a"):with_desc("editi: delete previous word"),
-	["i|<C-w>"] = map_cmd("<Esc>:set iskeyword=@,48-57,192-255<CR>a<C-G>u<C-W><Esc>:set iskeyword=@,48-57,_,192-255<CR>a"):with_noremap():with_desc("editi: delete previous word"),
+	["i|<C-w>"] = map_cmd("<Esc>:set iskeyword=@,48-57,192-255<CR>a<C-G>u<C-W><Esc>:set iskeyword=@,48-57,_,192-255<CR>a")
+        :with_silent()
+		:with_noremap()
+		:with_desc("editi: delete previous word"),
 	-- ["i|<C-q>"] = map_cmd("<Esc>:wq<CR>"):with_desc("editi: Save file and quit"),
 	-- Visual mode
 	-- ["v|J"] = map_cmd(":m '>+1<CR>gv=gv"):with_desc("editv: Move this line down"),

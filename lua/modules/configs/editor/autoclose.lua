@@ -19,4 +19,14 @@ return function()
 			disable_when_touch = false,
 		},
 	})
+
+	local bind = require("keymap.bind")
+	bind.nvim_load_mapping({
+		["i|<C-w>"] = bind.map_cmd(
+			"<Esc>:set iskeyword=@,48-57,192-255<CR>a<C-G>u<C-W><Esc>:set iskeyword=@,48-57,_,192-255<CR>a"
+		)
+			:with_silent()
+			:with_noremap()
+			:with_desc("editi: delete previous word"),
+	})
 end
