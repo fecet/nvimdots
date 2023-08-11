@@ -52,10 +52,10 @@ return function() -- Syntax Tree Surfer
 	vim.keymap.set("n", "vn", "<cmd>STSSelectCurrentNode<cr>", opts)
 
 	-- Select Nodes in Visual Mode
-	vim.keymap.set("x", "J", "<cmd>STSSelectNextSiblingNode<cr>", opts)
-	vim.keymap.set("x", "K", "<cmd>STSSelectPrevSiblingNode<cr>", opts)
-	vim.keymap.set("x", "H", "<cmd>STSSelectParentNode<cr>", opts)
-	vim.keymap.set("x", "L", "<cmd>STSSelectChildNode<cr>", opts)
+	-- vim.keymap.set("x", "J", "<cmd>STSSelectNextSiblingNode<cr>", opts)
+	-- vim.keymap.set("x", "K", "<cmd>STSSelectPrevSiblingNode<cr>", opts)
+	-- vim.keymap.set("x", "H", "<cmd>STSSelectParentNode<cr>", opts)
+	-- vim.keymap.set("x", "L", "<cmd>STSSelectChildNode<cr>", opts)
 
 	-- Swapping Nodes in Visual Mode
 	-- vim.keymap.set("x", "<A-j>", "<cmd>STSSwapNextVisual<cr>", opts)

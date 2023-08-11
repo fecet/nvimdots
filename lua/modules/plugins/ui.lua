@@ -105,5 +105,13 @@ ui["HampusHauffman/block.nvim"] = {
 	cmd = { "Block" },
 	dependencies = { "nvim-treesitter/nvim-treesitter" },
 }
+ui["letieu/hacker.nvim"] = {
+	dev = true,
+	lazy = true,
+	cmd = { "HackAuto", "HackFollowAuto" },
+	config = function()
+		require("hacker").setup({ is_popup = true })
+	end,
+}
 
 return ui

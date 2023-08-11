@@ -1,11 +1,5 @@
 local note = {}
 
-note["lukas-reineke/headlines.nvim"] = {
-	lazy = true,
-	ft = require("modules.utils.constants").markdown_family,
-	dependencies = "nvim-treesitter/nvim-treesitter",
-	config = require("note.headline"),
-}
 note["nvim-neorg/neorg"] = {
 	lazy = true,
 	ft = "norg",
