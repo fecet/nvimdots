@@ -6,9 +6,6 @@ return function()
 	vim.o.foldlevelstart = 99
 	vim.o.foldenable = true
 
-	-- Using ufo provider need remap `zR` and `zM`. If Neovim is 0.6.1, remap yourself
-	-- vim.keymap.set("n", "zR", require("ufo").openAllFolds)
-	-- vim.keymap.set("n", "zM", require("ufo").closeAllFolds)
 	local handler = function(virtText, lnum, endLnum, width, truncate)
 		local newVirtText = {}
 		local suffix = ("  %d "):format(endLnum - lnum)
@@ -59,19 +56,14 @@ return function()
 						table.insert(ufo_folds, fold)
 					end
 				end
-                print(vim.inspect(ufo_folds))
 				return ufo_folds
 			end)
 	end
 
 	local ftMap = {
-		-- python = get_cell_folds,
+		python = get_cell_folds,
 	}
 
-	-- buffer scope handler
-	-- will override global handler if it is existed
-	-- local bufnr = vim.api.nvim_get_current_buf()
-	-- require('ufo').setFoldVirtTextHandler(bufnr, handler)
 	ufo.setup({
 		fold_virt_text_handler = handler,
 		open_fold_hl_timeout = 0,
@@ -87,9 +79,4 @@ return function()
 			return ftMap[filetype]
 		end,
 	})
-	--
-
-	-- Option 3: treesitter as a main provider instead
-	-- Only depend on `nvim-treesitter/queries/filetype/folds.scm`,
-	-- performance and stability are better than `foldmethod=nvim_treesitter#foldexpr()`
 end

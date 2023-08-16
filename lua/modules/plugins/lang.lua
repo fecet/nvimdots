@@ -28,7 +28,7 @@ lang["chrisbra/csv.vim"] = {
 -- }
 lang["kiyoon/jupynium.nvim"] = {
 	lazy = true,
-	ft = { "python", "r" },
+	ft = { "python", "r", "lua" },
 	config = require("lang.jupynium"),
 	dev = true,
 }

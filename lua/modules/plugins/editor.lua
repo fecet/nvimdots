@@ -171,7 +171,7 @@ editor["nvim-treesitter/nvim-treesitter"] = {
 		-- {
 		-- 	"nvim-treesitter/nvim-treesitter-context",
 		-- 	config = require("editor.ts-context"),
-		-- },
+		--},
 		{
 			"windwp/nvim-ts-autotag",
 			config = require("editor.autotag"),
@@ -187,7 +187,14 @@ editor["nvim-treesitter/nvim-treesitter"] = {
 		{
 			"nvim-treesitter/playground",
 		},
-		{ "sustech-data/wildfire.nvim", dev = true, lazy = true },
+		{
+			"sustech-data/wildfire.nvim",
+			dev = true,
+			lazy = true,
+			config = function()
+				require("wildfire").setup()
+			end,
+		},
 		{ "ziontee113/syntax-tree-surfer", config = require("editor.surfer") },
 		{
 			"lukas-reineke/headlines.nvim",
@@ -195,7 +202,16 @@ editor["nvim-treesitter/nvim-treesitter"] = {
 			ft = require("modules.utils.constants").markdown_family,
 			config = require("note.headline"),
 		},
-		{ "filNaj/tree-setter" },
+		{ "filNaj/tree-setter", ft = { "python", "lua" } },
+		{ "HampusHauffman/block.nvim", cmd = "Block", lazy = true },
+		{ "mizlan/iswap.nvim", lazy = true },
+	},
+}
+
+editor["haolian9/nag.nvim"] = {
+	lazy = true,
+	dependencies = {
+		"haolian9/infra.nvim",
 	},
 }
 

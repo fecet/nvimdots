@@ -96,6 +96,7 @@ return function()
 			vimwiki = false,
 			which_key = true,
 			headlines = true,
+			jupynium = true,
 		},
 		color_overrides = {},
 		highlight_overrides = {

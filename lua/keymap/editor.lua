@@ -91,11 +91,13 @@ local plug_map = {
 		:with_silent()
 		:with_noremap()
 		:with_desc("edit: Goto begin of pair"),
-	["n|<CR>"] = map_callback(function()
-		require("wildfire").init_selection()
-	end):with_silent(),
-	["x|<CR>"] = map_cr(":lua require'wildfire'.node_incremental()"):with_silent(),
+	-- ["n|<CR>"] = map_cmd(":lua require'wildfire'.init_selection()<CR>"):with_silent(),
+	["n|<leader>a"] = map_cmd(":lua require'wildfire'.init_selection()<CR>:lua require('tsht').nodes()<CR>"):with_silent(),
+	-- ["x|<CR>"] = map_cmd(":lua require'nvim-treesitter.incremental_selection'.node_incremental()<CR>"),
+	-- ["x|<CR>"] = map_cmd(":lua require'wildfire'.node_incremental()<CR>"),
 	["x|-"] = map_cr(":lua require'wildfire'.visual_inner()"):with_silent(),
+	["x|nn"] = map_cr(":lua require'nag'.vsplit()"):with_silent(),
+	["n|<leader>sw"] = map_cr(":ISwapNodeWith"):with_silent(),
 }
 
 bind.nvim_load_mapping(plug_map)

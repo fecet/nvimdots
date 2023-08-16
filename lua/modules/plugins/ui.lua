@@ -94,17 +94,11 @@ ui["fecet/fortune.nvim"] = {
 	lazy = true,
 	dev = true,
 }
-ui["folke/edgy.nvim"] = {
-	event = "VeryLazy",
-	-- opt = {},
-	config = require("ui.edgy"),
-}
-ui["HampusHauffman/block.nvim"] = {
-	lazy = true,
-	-- event = { "CursorHold", "CursorHoldI" },
-	cmd = { "Block" },
-	dependencies = { "nvim-treesitter/nvim-treesitter" },
-}
+-- ui["folke/edgy.nvim"] = {
+-- 	event = "VeryLazy",
+-- 	-- opt = {},
+-- 	config = require("ui.edgy"),
+-- }
 ui["letieu/hacker.nvim"] = {
 	dev = true,
 	lazy = true,
